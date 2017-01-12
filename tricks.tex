@@ -1,0 +1,249 @@
+% Previous Version:	1.2
+% Current Version:	In development
+% Date:				July 25, 2013
+\documentclass[10pt,letterpaper,landscape]{article}	% Basics
+\usepackage[utf8]{inputenc}							% Inputs
+\usepackage[T1]{fontenc}							% Inputs
+\usepackage[margin=0.75in]{geometry}				% 1 inch margins
+\usepackage{hyperref}
+\hypersetup{
+            colorlinks,								% Begin setup of link colors
+            citecolor=black,
+            filecolor=black,
+            linkcolor=black,
+            urlcolor=black,							% End setup
+            pdfpagelayout=OneColumn,				% Begin initial PDF view
+            pdfpagemode=UseNone,					% End initial PDF view
+            pdfauthor={Kevin Dong},					% Begin PDF metadata
+            pdftitle={LaTeX Tricks (Version 1.2 -> ?; July 25, 2013)},
+            pdfproducer={LaTeX with hyperref},
+            pdfcreator={pdflatex}					% End PDF metadata
+            }
+\usepackage{booktabs}								% Table style
+\renewcommand{\arraystretch}{1.2}					% Allows more space in between table rows and columns
+\usepackage{listings}
+\lstset{basicstyle=\ttfamily\small}
+\usepackage[labelformat=empty]{caption}
+\usepackage{longtable}
+\usepackage{verbatim}
+\usepackage{tikz}
+
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\tabletitle}[1]{{\textbf{\large{#1}}}}
+\providecommand{\e}[1]{\ensuremath{\times 10^{#1}}}
+
+
+
+\title{\LaTeX \mbox{} Tricks}
+\author{Kevin Dong}
+\date{June 28, 2013}
+
+\begin{document}
+\begin{center}
+{\huge \LaTeX \mbox{} Tricks} \\
+\mbox{} \\
+{\large Kevin Dong}
+\mbox{} \\
+{\normalsize Version 1.2 -> ?}
+\end{center}
+
+\begin{longtable}{ @{} l l @{} }
+\caption{\tabletitle{Preamble}} \\ \toprule
+Command & Effect \\ \midrule
+\endfirsthead
+\caption{\tabletitle{Preamble (cont.)}} \\ \toprule
+Command & Effect \\ \midrule
+\endhead
+\lstinline!\documentclass[...]{...}! & Sets the basics, first blank is for options; second blank is the document type \\
+\lstinline!\usepackage[utf8]{inputenc}! & Allows direct, non-ASCII character input \\
+\lstinline!\usepackage[T1]{fontenc}! & Allows the document to be copied without artifacts \\
+\lstinline!\usepackage[...]{geometry}! & Sets up margins \\
+\lstinline!\usepackage{booktabs}! & Better looking tables \\
+\lstinline!\renewcommand{\arraystretch}{1.2}! & More space between rows in tables \\
+\lstinline!\usepackage[labelformat=empty]{caption}! & Removes the "Table: " portion from table titles and captions \\
+\lstinline!\usepackage{longtable}! & Allows tables to span multiple pages \\
+\lstinline!\usepackage{listings}! & Allows nice looking code in text \\
+\lstinline!\usepackage{hyperref}! & Sets up PDF metadata, initial view, and links \\
+\lstinline!\usepackage{verbatim}! & Allows multi-line comments and primitive code displays \\
+\lstinline!\usepackage{color}! & Allows custom colors \\
+\lstinline!\usepackage{indentfirst}! & Indents the first paragraph of a chapter \\
+\lstinline!\usepackage{pdflscape}! & Allows certain pages to be in landscape; \lstinline!\begin{landscape}...\end{landscape}! \\
+\lstinline!\usepackage{nopageno}! & Removes page numbers universally \\
+\lstinline!\usepackage{graphicx}! & Allows more easy picture insertion \\
+\lstinline!\usepackage{tikz}! & Allows custom, vector pictures \\
+\lstinline!\usepackage{helvet}! & Uses a font that's nearly identical to Helvetica \\
+\lstinline!\usepackage{times}! & Uses the Times New Roman font \\
+\lstinline!\setlength\parindent{0pt}! & No indents universally \\
+\lstinline!\renewcommand{\contentsname}{Table of Contents}! & Changes the title on the TOC page \\
+\lstinline!\renewcommand{\bibname}{References}! & Changes the title on the bibliography page \\
+\lstinline!\providecommand{\e}[1]{\ensuremath{\times 10^{#1}}}! & Scientific notation; invoke with \lstinline!\e{...}! (e.g. \lstinline!6.6\e{6}! creates 6.6\e{6})\\
+\lstinline!\title{\LaTeX Tricks}! & State the title; used in \lstinline!\maketitle! \\
+\lstinline!\author{Kevin Dong}! & State the author(s); used in \lstinline!\maketitle! \\
+\lstinline!\date{June 28, 2013}! & State the date; \lstinline!\today! can be used; used in \lstinline!\maketitle! \\
+\bottomrule
+\end{longtable}
+
+\begin{longtable}{ @{} l l l @{} } 
+\caption{\tabletitle{Preamble Package Options}} \\ \toprule
+Package & Options & Description \\ \midrule
+\endfirsthead
+\caption{\tabletitle{Preamble Package Options (cont.)}} \\ \toprule
+Package & Options & Description \\ \midrule
+\endhead
+\lstinline!documentclass! & \lstinline!\documentclass[options]{class}! & \lstinline!options!: font size (\lstinline!10pt!, \lstinline!12pt!, etc.), \lstinline!landscape!, \lstinline!titlepage!, \lstinline!notitlepage!, and \lstinline!letterpaper! \\
+&& \lstinline!class!: \lstinline!article!, \lstinline!report!, \lstinline!book!, \lstinline!letter!, and \lstinline!beamer! (presentation) \\
+
+\lstinline!geometry! & \lstinline!\usepackage[...]{geometry}! & \\
+& \lstinline!margin=1in! & Universal margin \\
+& \lstinline!left=1in! & Left margin \\
+& \lstinline!right=1in! & Right margin \\
+& \lstinline!top=1in! & Top margin \\
+& \lstinline!bottom=1in! & Bottom margin \\
+
+\lstinline!listings! & \lstinline!\lstset{...}! & \\
+& \lstinline!basicstyle=\scriptsize\ttfamily! & \lstinline!\scriptsize! is the font size; \lstinline!\ttfamily! is the font itself \\
+& \lstinline!backgroundcolor=\color{gray}! & Background color for code \\
+& \lstinline!numbers=left! & Enables number and places it on the left \\
+
+\lstinline!hyperref! & \lstinline!\hypersetup{...}! & \\
+& \lstinline!colorlinks! & Allows for custom colors; removes boxes in PDF \\
+& \lstinline!citecolor=black! & Makes in-line citations black \\
+& \lstinline!linkcolor=black! & Makes TOC links black \\
+& \lstinline!urlcolor=black! & Makes URLs black \\
+& \lstinline!pdfpagelayout=OneColumn! & Default view becomes a single continuous column \\
+& \lstinline!pdfpagemode=UseNone! & Hides the bookmarks panel by default \\
+& \lstinline!pdfauthor={author}! & PDF metadata: author \\
+& \lstinline!pdftitle={title}! & PDF metadata: title \\
+& \lstinline!pdfproducer={LaTeX with hyperref}! & PDF metadata; relatively useless \\
+& \lstinline!pdfcreator={pdflatex}! & PDF metadata; relatively useless \\ 
+
+\lstinline!graphicx! & \lstinline!\includegraphics[...]{titlepage.png}! & \\
+& \lstinline!width=...! & Determines the width of the picture; \lstinline!\textwidth! makes it the width of the printable area \\
+&& Other measures of size can be used, such as inches or centimeters \\
+\bottomrule
+\end{longtable}
+
+\begin{longtable}{ @{} l l @{} }
+\caption{\tabletitle{Sectioning}} \\ \toprule
+Hierarchy (from high to low) & Notes \\ \midrule
+\endfirsthead
+\caption{\tabletitle{Sectioning (cont.)}} \\ \toprule
+Hierarchy (from high to low) & Notes \\ \midrule
+\endhead
+\lstinline!\part{...}! & Only available in \lstinline!book! and \lstinline!report! \\
+\lstinline!\chapter{...}! & Only available in \lstinline!book! and \lstinline!report! \\
+\lstinline!\section{...}! & Not available in letter \\
+\lstinline!\subsection{...}! & Not available in letter \\
+\lstinline!\subsubsection{...}! & Not available in letter \\
+\lstinline!\paragraph{...}! & Not available in letter; no real use since it doesn't show up in the TOC \\
+\lstinline!\subparagraph{...}! & Not available in letter; no real use since it doesn't show up in the TOC \\
+\bottomrule
+\end{longtable}
+
+\begin{longtable}{ @{} l l l @{} }
+\caption{\tabletitle{Tables}} \\ \toprule
+Package & Command & Effect \\ \midrule
+\endfirsthead
+\caption{\tabletitle{Tables (cont.)}} \\ \toprule
+Package & Command & Effect \\ \midrule
+\endhead
+\lstinline!table! with \lstinline!tabular! & \lstinline!\begin{table}[h]! & Forces the table to be placed right where the code is placed \\
+&& Likewise, \lstinline!p! forces the table to be on a new page by itself \\
+&& \lstinline!tabular! should be placed within the confines of table; \lstinline!longtable! can not \\
+\lstinline!table! with \lstinline!tabular! & \lstinline!\centering! & Centers the table; should be placed right after \lstinline!\begin{table}! \\
+\lstinline!tabular! or \lstinline!longtable! & \lstinline!\begin{...}! & Begins the table; replace "\lstinline!...!" with \lstinline!tabular! or \lstinline!longtable! \\
+\lstinline!tabular! or \lstinline!longtable! & \lstinline!\end{...}! & Ends the table; replace "\lstinline!...!" with \lstinline!tabular! or \lstinline!longtable! \\
+\lstinline!tabular! or \lstinline!longtable! & \lstinline!\multicolumn{3}{c}{Snippet}! & Allows a cell to span multiple columns \\
+&& \lstinline!3!: the number of cells that the cell spans \\
+&& \lstinline!c!: how the text in the cell is aligned \\
+&& \lstinline!Snippet!: the text that's in the cell \\
+\lstinline!tabular! or \lstinline!longtable! & \lstinline!\cmidrule{6-8}! & Creates a horizontal line below the row that spans from column 6 through column 8 \\
+&& This command should be placed like so: \lstinline!one & two & three & four \\ \cmidrule{3-4}! \\
+\lstinline!booktabs! & \lstinline!\toprule!, \lstinline!\midrule!, and \lstinline!\bottomrule! & Produces horizontal lines in tables; should be placed like so: \lstinline!Command & Effect \\ \midrule! \\
+\lstinline!tabular! or \lstinline!longtable! & \lstinline!\begin{tabular}{ @{} l c r @{} }! & \lstinline!@{}!: makes the horizontal table lines begin and end where the text ends \\
+&& \lstinline!l!, \lstinline!c!, and \lstinline!r!: The columns become, respectively, left, center, and right aligned \\
+\lstinline!longtable! & \lstinline!\caption{...}\\! & This should be used immediately after the \lstinline!\begin{table}! command to make a title \\
+&& Likewise, this can be used after the \lstinline!\bottomrule! command to put in a caption \\
+\bottomrule
+\end{longtable}
+
+\begin{longtable}{ @{} l l l @{} }
+\caption{\tabletitle{Text Options}} \\ \toprule
+Command & Example & Description \\ \midrule
+\endfirsthead
+\caption{\tabletitle{Text Options (cont.)}} \\ \toprule
+Command & Example & Description \\ \midrule
+\endhead
+\lstinline!\emph{Example.}! & \emph{Example.} & Emphasizes the text; normally just italicizes \\
+\lstinline!\textbf{Example.}! & \textbf{Example.} & Bolds the text \\
+\lstinline!\textit{Example.}! & \textit{Example.} & Italicizes the text \\
+\lstinline!\textsc{Example.}! & \textsc{Example.} & Changes to the font to an uppercase font \\
+\lstinline!\textsf{Example.}! & \textsf{Example.} & Changes the font to sans serif \\
+\lstinline!\textsl{Example.}! & \textsl{Example.} & Slants the text \\
+\lstinline!\texttt{Example.}! & \texttt{Example.} & Monospaces the text \\
+\bottomrule
+\end{longtable}
+
+\begin{longtable}{ @{} l l @{} } 
+\caption{\tabletitle{Font Sizes and Examples (based on 10 pt)}} \\ \toprule
+Sizes & Example \\ \midrule
+\endfirsthead
+\caption{\tabletitle{Font Sizes and Examples (based on 10 pt) (cont.)}} \\ \toprule
+Sizes & Example \\ \midrule
+\endhead
+\lstinline!\tiny! & {\tiny This is an example.} \\
+\lstinline!\scriptsize! & {\scriptsize This is an example.} \\
+\lstinline!\footnotesize! & {\footnotesize This is an example.} \\
+\lstinline!\small! & {\small This is an example.} \\
+\lstinline!\normalsize! & {\normalsize This is an example.} \\
+\lstinline!\large! & {\large This is an example.} \\
+\lstinline!\Large! & {\Large This is an example.} \\
+\lstinline!\LARGE! & {\LARGE This is an example.} \\
+\lstinline!\huge! & {\huge This is an example.} \\
+\lstinline!\Huge! & {\Huge This is an example.} \\
+\bottomrule
+\end{longtable}
+
+\begin{longtable}{ @{} l l @{} }
+\caption{\tabletitle{Miscellaneous}} \\ \toprule
+Command & Effect \\ \midrule
+\endfirsthead
+\caption{\tabletitle{Miscellaneous (cont.)}} \\ \toprule
+Command & Effect \\ \midrule
+\endhead
+\lstinline!\maketitle! & Placed at the beginning of each document, after the \lstinline!\begin{document}! command, to place a title block \\
+\lstinline!{\command ...}! or \lstinline!\command{...}! & Whereas \lstinline!\command! is a font size or option; all text commands can be used either way \\
+\lstinline!\lstinline{...}! & For snippets of code in-line; the \lstinline!listings! package is required \\
+& Use {\ttfamily\small\textbackslash lstinline!...!} when inside a table environment \\
+\lstinline!\begin{center}...\end{center}! & Centers the text inside \\
+\lstinline!\tableofcontents! & Places the TOC where the command is \\
+\lstinline!\vspace*{\fill}!...\lstinline!\vspace*{\fill}! & Vertically centers the text inside \\
+\lstinline!\begin{itemize}!...\lstinline!\end{itemize}! & Starts a bullet-point list, each item/line should like so: \lstinline!\item ...! \\
+& Sub-bullet points can be used by  nesting another \lstinline!itemize! environment \\
+\lstinline!\pagebreak! & Starts a new page \\
+\bottomrule
+\end{longtable}
+
+\begin{longtable}{ @{} l l l @{} }
+\caption{\tabletitle{Graphics/TikZ}} \\ \toprule
+Package & Command & Effect \\ \midrule
+\lstinline!graphicx! & \lstinline!\includegraphics[options]{picture}! & \lstinline!options!: \lstinline!\width=...! (\lstinline!\textwidth!, 1mm, 2cm, 3in, 4pt, etc.) \\
+&& \lstinline!picture! (for pdflatex): Accepts \lstinline!.jpg!, \lstinline!.jpeg!, \lstinline!.png!, \lstinline!.pdf!, and \lstinline!.eps! files\\
+\lstinline!tikz! & \lstinline!\begin{tikzpicture}[options]...\end{tikzpicture}! & Creates the environment for a TikZ picture \\
+&& \lstinline!options!: \lstinline!"x=..."! and \lstinline!"y=..."! dictates how much 1 unit is \\
+&& e.g. when \lstinline!x=1in!, the line produced by \lstinline!(0,0) -- (0,1)! is 1 inch \\
+& \lstinline!\draw[...] (0,0) -- (1,0) -- (1,1);! & Draws a right angle, minimum of 2 point required; no limit on maximum \\
+& \lstinline!\draw[...] (0,0) rectangle (2,1);! & Draws a rectangle with an bottom-left point of (0,0) and top-right point of (2,1) \\
+& \lstinline!\draw[...] (0,0) circle (1.0);! & Draws a circle with the origin at (0,0) and a radius of 1.0 \\
+& \lstinline!\draw[...] (0,0) ellipse (1.0 and 0.7);! & (0,0) is the origin, "1.0" is the x radius, "0.7" is the y radius \\
+& \lstinline!\draw (0,0) arc (15:120:1.0cm);! & Draws an arc (from 15 to 120 degrees) with a center of (0,0) and radius of 1.0 cm \\
+& \lstinline!\clip (0,0) rectangle (1,1)! & Crops the TikZ picture to the specified coordinates \\
+\bottomrule
+\end{longtable}
+
+\begin{center}
+\begin{tikzpicture}[x=1in,y=1in]
+\draw (0,0) -- (0,0);
+\end{tikzpicture}
+\end{center}
+\end{document}
